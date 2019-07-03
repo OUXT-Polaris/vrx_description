@@ -21,5 +21,5 @@ wamv_imu:
       y: 0
 wamv_p3d:
     - name: p3d_wamv
-wamv_3d_lidar:
+lidar:
     - name: velodyne_front

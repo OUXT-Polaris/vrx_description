@@ -53,8 +53,14 @@
     <parent link="base_link"/>
     <child link="right_battery_link"/>
   </joint>
-  <!-- Basic model of the 16' WAM-V USV -->
   <link name="base_link">
+  </link>
+  <joint name="dummy_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="dummy_link"/>
+  </joint>
+  <!-- Basic model of the 16' WAM-V USV -->
+  <link name="dummy_link">
     <visual>
       <geometry>
         <mesh filename="package://wamv_description/mesh/WAM-V-Base.dae"/>
@@ -478,6 +484,11 @@
       <bodyName>gps_wamv_link</bodyName>
       <frameId>gps_wamv_link</frameId>
       <topicName>gps/fix</topicName>
+      <!-- Note that the hector_gazebo_ros_gps plugin uses NWU coordinates
+             for reporting velocities.  This may cause problems if localization
+             requires velocity in ENU.  
+             See Issue #64 in VRX project for details
+             https://bitbucket.org/osrf/vrx/issues/64 -->
       <velocityTopicName>gps/fix_velocity</velocityTopicName>
       <!-- Location of origin of Gazebo Sand Island map -->
       <referenceLatitude>21.30996</referenceLatitude>
@@ -593,8 +604,8 @@
       <camera name="middle_camera_camera">
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
-          <width>800</width>
-          <height>800</height>
+          <width>1280</width>
+          <height>720</height>
           <format>R8G8B8</format>
         </image>
         <clip>
@@ -720,8 +731,8 @@
       <camera name="left_camera_camera">
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
-          <width>800</width>
-          <height>800</height>
+          <width>1280</width>
+          <height>720</height>
           <format>R8G8B8</format>
         </image>
         <clip>
@@ -847,8 +858,8 @@
       <camera name="right_camera_camera">
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
-          <width>800</width>
-          <height>800</height>
+          <width>1280</width>
+          <height>720</height>
           <format>R8G8B8</format>
         </image>
         <clip>
@@ -965,7 +976,7 @@
       <ray>
         <scan>
           <horizontal>
-            <samples>18000.0</samples>
+            <samples>18750.0</samples>
             <resolution>0.1</resolution>
             <min_angle>-3.14159265359</min_angle>
             <max_angle>3.14159265359</max_angle>
@@ -979,7 +990,7 @@
         </scan>
         <range>
           <min>0.1</min>
-          <max>100</max>
+          <max>130</max>
         </range>
         <noise>
           <type>gaussian</type>
@@ -998,4 +1009,6 @@
   <gazebo reference="velodyne_front_post_link">
     <material>Gazebo/Black</material>
   </gazebo>
+  <!--specs for 16 beam lidar are implemented by default.
+          See wamv_3d_lidar for those-->
 </robot>

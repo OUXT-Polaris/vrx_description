@@ -15,8 +15,8 @@
       <xacro:wamv_camera y="0.2" x="0.75" name="left_camera" P="${radians(15)}" />
       <xacro:wamv_camera y="-0.2" x="0.75" name="right_camera" P="${radians(15)}" />
 
-    <!-- === wamv_3d_lidar === -->
-      <xacro:wamv_3d_lidar name="velodyne_front" />
+    <!-- === lidar === -->
+      <xacro:lidar name="velodyne_front" />
 
   </xacro:macro>
 </robot>
