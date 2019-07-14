@@ -478,29 +478,25 @@
     <child link="gps_wamv_link"/>
   </joint>
   <gazebo>
-    <plugin filename="libhector_gazebo_ros_gps.so" name="gps_plugin_gps_wamv">
-      <updateRate>15.0</updateRate>
+    <plugin filename="libnmea_gps_plugin.so" name="gps_plugin_gps_wamv">
+      <publishRate>1.0</publishRate>
       <alwaysOn>true</alwaysOn>
       <bodyName>gps_wamv_link</bodyName>
       <frameId>gps_wamv_link</frameId>
-      <topicName>gps/fix</topicName>
+      <topicName>nmea_sentence</topicName>
       <!-- Note that the hector_gazebo_ros_gps plugin uses NWU coordinates
              for reporting velocities.  This may cause problems if localization
              requires velocity in ENU.  
              See Issue #64 in VRX project for details
              https://bitbucket.org/osrf/vrx/issues/64 -->
-      <velocityTopicName>gps/fix_velocity</velocityTopicName>
       <!-- Location of origin of Gazebo Sand Island map -->
       <referenceLatitude>21.30996</referenceLatitude>
       <referenceLongitude>-157.8901</referenceLongitude>
       <referenceAltitude>1.3</referenceAltitude>
-      <referenceHeading>90</referenceHeading>
-      <offset>0.0 0.0 0.0</offset>
-      <drift>0.0 0.0 0.0</drift>
-      <gaussianNoise>0 0 0</gaussianNoise>
-      <velocityOffset>0.0 0.0 0.0</velocityOffset>
-      <velocityDrift>0.0 0.0 0.0</velocityDrift>
-      <velocityGaussianNoise>0.0 0.0 0.0</velocityGaussianNoise>
+      <referenceHeading>280</referenceHeading>
+      <velocityGaussiaNoise>0.05</velocityGaussiaNoise>
+      <orientationGaussiaNoise>0.05</orientationGaussiaNoise>
+      <positionGaussiaNoise>0.05</positionGaussiaNoise>      
     </plugin>
   </gazebo>
   <gazebo>
