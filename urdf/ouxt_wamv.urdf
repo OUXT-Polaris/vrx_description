@@ -536,6 +536,8 @@
       <inertia ixx="0.0000450" ixy="0" ixz="0" iyy="0.0001746" iyz="0" izz="0.0001746"/>
     </inertial>
   </link>
+  <link name="middle_camera_link_optical">
+  </link>
   <!-- Sensor post -->
   <link name="middle_camera_post_link">
     <visual>
@@ -592,6 +594,11 @@
     <origin rpy="0 0.261799387799 0" xyz="0.02 0 0.027"/>
     <parent link="middle_camera_post_arm_link"/>
     <child link="middle_camera_link"/>
+  </joint>
+  <joint name="middle_camera_to_middle_camera_optical_joint" type="fixed">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0 0 0"/>
+    <parent link="middle_camera_link"/>
+    <child link="middle_camera_link_optical"/>
   </joint>
   <!-- Gazebo camera setup -->
   <gazebo reference="middle_camera_link">
@@ -663,6 +670,8 @@
       <inertia ixx="0.0000450" ixy="0" ixz="0" iyy="0.0001746" iyz="0" izz="0.0001746"/>
     </inertial>
   </link>
+  <link name="left_camera_link_optical">
+  </link>
   <!-- Sensor post -->
   <link name="left_camera_post_link">
     <visual>
@@ -704,7 +713,7 @@
     </inertial>
   </link>
   <joint name="base_to_left_camera_post_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.7 0.2 1.38475"/>
+    <origin rpy="0 0 2.0944" xyz="0.7 0.4 1.38475"/>
     <parent link="base_link"/>
     <child link="left_camera_post_link"/>
   </joint>
@@ -719,6 +728,11 @@
     <origin rpy="0 0.261799387799 0" xyz="0.02 0 0.027"/>
     <parent link="left_camera_post_arm_link"/>
     <child link="left_camera_link"/>
+  </joint>
+  <joint name="left_camera_to_left_camera_optical_joint" type="fixed">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0 0 0"/>
+    <parent link="left_camera_link"/>
+    <child link="left_camera_link_optical"/>
   </joint>
   <!-- Gazebo camera setup -->
   <gazebo reference="left_camera_link">
@@ -790,6 +804,8 @@
       <inertia ixx="0.0000450" ixy="0" ixz="0" iyy="0.0001746" iyz="0" izz="0.0001746"/>
     </inertial>
   </link>
+  <link name="right_camera_link_optical">
+  </link>
   <!-- Sensor post -->
   <link name="right_camera_post_link">
     <visual>
@@ -831,7 +847,7 @@
     </inertial>
   </link>
   <joint name="base_to_right_camera_post_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.7 -0.2 1.38475"/>
+    <origin rpy="0 0 -2.0944" xyz="0.7 -0.4 1.38475"/>
     <parent link="base_link"/>
     <child link="right_camera_post_link"/>
   </joint>
@@ -846,6 +862,11 @@
     <origin rpy="0 0.261799387799 0" xyz="0.02 0 0.027"/>
     <parent link="right_camera_post_arm_link"/>
     <child link="right_camera_link"/>
+  </joint>
+  <joint name="right_camera_to_right_camera_optical_joint" type="fixed">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0 0 0"/>
+    <parent link="right_camera_link"/>
+    <child link="right_camera_link_optical"/>
   </joint>
   <!-- Gazebo camera setup -->
   <gazebo reference="right_camera_link">
